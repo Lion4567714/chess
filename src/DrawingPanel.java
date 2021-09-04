@@ -1,3 +1,4 @@
+/*
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
@@ -93,13 +94,17 @@ public class DrawingPanel extends MouseInputAdapter
         panel.setBackground(Color.CYAN);
         panel.setPreferredSize(new Dimension(512, 512));
 
-        /*JLabel board = new JLabel();
+        */
+/*JLabel board = new JLabel();
         board = pieceLabels.get(0);
-        panel.add(board);*/
+        panel.add(board);*//*
+
         panel.add(layeredPane);
-        /*for (JLabel l : pieceLabels) {
+        */
+/*for (JLabel l : pieceLabels) {
             panel.add(l);
-        }*/
+        }*//*
+
 
         statusBar = new JLabel(" ");
 
@@ -139,3 +144,4 @@ public class DrawingPanel extends MouseInputAdapter
         statusBar.setText("(" + e.getX() + ", " + e.getY() + ")");
     }
 }
+*/
