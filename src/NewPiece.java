@@ -1,11 +1,14 @@
+/*
 import java.util.ArrayList;
 import java.util.Scanner;
 
+*/
 /**
  * New Piece class to attempt to use enums for pieces instead of separate classes.
  * Black and white chess pieces will be stores in separate arrays to decrease access time or
  * something I don't know what im saying
- */
+ *//*
+
 
 
 enum PieceEnum {
@@ -24,21 +27,6 @@ enum PieceEnum {
         this.value = value;
         this.movesStraight = movesStraight;
         this.movesDiagonally = movesDiagonally;
-    }
-}
-
-class Move {
-    public int startX;
-    public int startY;
-    public int endX;
-    public int endY;
-    public int value;
-
-    public Move(int startX, int startY, int endX, int endY) {
-        this.startX = startX;
-        this.startY = startY;
-        this.endX = endX;
-        this.endY = endY;
     }
 }
 
@@ -123,7 +111,8 @@ public class NewPiece {
         return possibleMoves;
     }
 
-    /**
+    */
+/**
      * Note to self: to implement machine learning, have the computer create a file that saves the
      * scenario it finds itself in, and grade it based on how well or poor it was going. Then for
      * later, the computer will find the situation that is most similar to the one its in.
@@ -131,7 +120,8 @@ public class NewPiece {
      * @param board2
      * @param move
      * @return
-     */
+     *//*
+
     public int calculateValue(PieceEnum[][] board1, PieceEnum[][] board2, Move move) {
         int value = 0;
 
@@ -155,9 +145,11 @@ public class NewPiece {
         return value;
     }
 
-    /**
+    */
+/**
      * Move maker method for the player to input their move via the console
-     */
+     *//*
+
     public void makeMove() {
         Scanner console = new Scanner(System.in);
         System.out.println("Input syntax: xyxy    (i.e. start coordinates, end coordinates)");
@@ -171,10 +163,12 @@ public class NewPiece {
         }
     }
 
-    /**
+    */
+/**
      * Move maker method to play a move
      * @param move Inputted move to make
-     */
+     *//*
+
     public void makeMove(Move move) {
         PieceEnum[][] board1;
         PieceEnum[][] board2;
@@ -214,3 +208,4 @@ public class NewPiece {
 
     }
 }
+*/

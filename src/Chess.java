@@ -8,6 +8,15 @@
  */
 public class Chess {
     public static void main(String[] args) {
+        BoardManager bMgr = new BoardManager();
+        PieceManager pMgr = new PieceManager();
 
+        bMgr.initializeBoard();
+        bMgr.drawBoard();
+
+        while (true) {
+            Move move = pMgr.userMoveInput(bMgr.board);
+            bMgr.playMove(move);
+        }
     }
 }

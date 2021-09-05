@@ -1,14 +1,21 @@
 public interface Piece {
-    public boolean color;
-    public int x;
-    public int y;
-    public int value;
-    public char symbol;
+    boolean color = false;
+    int x = 0;
+    int y = 0;
+    int value = 0;
+    char symbol = ' ';
 
-    public boolean[][] getPossibleMoves(Piece[][] board);
+    void setX(int x);
+    void setY(int y);
+    int getX();
+    int getY();
+    boolean getColor();
+    char getSymbol();
+
+    boolean[][] getPossibleMoves(Piece[][] board);
 }
 
-public class Pawn implements Piece {
+class Pawn implements Piece {
     boolean color;
     int x;
     int y;
@@ -19,6 +26,30 @@ public class Pawn implements Piece {
         this.color = color;
         this.x = x;
         this.y = y;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public int getX() {
+        return this.x;
+    }
+
+    public int getY() {
+        return this.y;
+    }
+
+    public boolean getColor() {
+        return this.color;
+    }
+
+    public char getSymbol() {
+        return this.symbol;
     }
 
     public boolean[][] getPossibleMoves(Piece[][] board) {
@@ -66,7 +97,7 @@ public class Pawn implements Piece {
     }
 }
 
-public class Rook implements Piece {
+class Rook implements Piece {
     boolean color;
     int x;
     int y;
@@ -77,6 +108,30 @@ public class Rook implements Piece {
         this.color = color;
         this.x = x;
         this.y = y;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public int getX() {
+        return this.x;
+    }
+
+    public int getY() {
+        return this.y;
+    }
+
+    public boolean getColor() {
+        return this.color;
+    }
+
+    public char getSymbol() {
+        return this.symbol;
     }
 
     public boolean[][] getPossibleMoves(Piece[][] board) {
@@ -130,7 +185,7 @@ public class Rook implements Piece {
     }
 }
 
-public class Knight implements Piece {
+class Knight implements Piece {
     boolean color;
     int x;
     int y;
@@ -141,6 +196,30 @@ public class Knight implements Piece {
         this.color = color;
         this.x = x;
         this.y = y;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public int getX() {
+        return this.x;
+    }
+
+    public int getY() {
+        return this.y;
+    }
+
+    public boolean getColor() {
+        return this.color;
+    }
+
+    public char getSymbol() {
+        return this.symbol;
     }
 
     public boolean[][] getPossibleMoves(Piece[][] board) {
@@ -199,7 +278,7 @@ public class Knight implements Piece {
 
 }
 
-public class Bishop implements Piece {
+class Bishop implements Piece {
     boolean color;
     int x;
     int y;
@@ -210,6 +289,30 @@ public class Bishop implements Piece {
         this.color = color;
         this.x = x;
         this.y = y;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public int getX() {
+        return this.x;
+    }
+
+    public int getY() {
+        return this.y;
+    }
+
+    public boolean getColor() {
+        return this.color;
+    }
+
+    public char getSymbol() {
+        return this.symbol;
     }
 
     public boolean[][] getPossibleMoves(Piece[][] board) {
@@ -285,7 +388,7 @@ public class Bishop implements Piece {
     }
 }
 
-public class Queen implements Piece {
+class Queen implements Piece {
     boolean color;
     int x;
     int y;
@@ -296,6 +399,30 @@ public class Queen implements Piece {
         this.color = color;
         this.x = x;
         this.y = y;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public int getX() {
+        return this.x;
+    }
+
+    public int getY() {
+        return this.y;
+    }
+
+    public boolean getColor() {
+        return this.color;
+    }
+
+    public char getSymbol() {
+        return this.symbol;
     }
 
     public boolean[][] getPossibleMoves(Piece[][] board) {
@@ -415,7 +542,7 @@ public class Queen implements Piece {
     }
 }
 
-public class King implements Piece {
+class King implements Piece {
     boolean color;
     int x;
     int y;
@@ -426,6 +553,30 @@ public class King implements Piece {
         this.color = color;
         this.x = x;
         this.y = y;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public int getX() {
+        return this.x;
+    }
+
+    public int getY() {
+        return this.y;
+    }
+
+    public boolean getColor() {
+        return this.color;
+    }
+
+    public char getSymbol() {
+        return this.symbol;
     }
 
     public boolean[][] getPossibleMoves(Piece[][] board) {
