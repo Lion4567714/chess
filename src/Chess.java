@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Random;
+
 /**
  * <b>Chess</b>
  * Chess is cool.
@@ -16,6 +19,12 @@ public class Chess {
 
         while (true) {
             Move move = pMgr.userMoveInput(bMgr.board);
+            bMgr.playMove(move);
+
+            ArrayList<Move> moveArrayList = pMgr.getMoves(bMgr.board, true);
+            Random rand = new Random();
+            move = moveArrayList.get(rand.nextInt(moveArrayList.size()));
+            System.out.println(move.toString());
             bMgr.playMove(move);
         }
     }

@@ -18,6 +18,10 @@ class Move {
         this.endX = endX;
         this.endY = endY;
     }
+
+    public String toString() {
+        return piece.toString() + " at " + piece.getX() + piece.getY() + " to " + endX + endY;
+    }
 }
 
 /**
@@ -109,14 +113,15 @@ public class PieceManager {
 
         for (Piece[] pArr : board) {
             for (Piece p : pArr) {
-                if (p != null || p.color == color) {
-                    assert p != null;
-                    boolean[][] availabilityMap = p.getPossibleMoves(board);
+                if (p != null) {
+                    if (p.getColor() == color) {
+                        boolean[][] availabilityMap = p.getPossibleMoves(board);
 
-                    for (int i = 0; i < 8; i++) {
-                        for (int j = 0; j < 8; j++) {
-                            if (availabilityMap[i][j]) {
-                                possibleMoveArr.add(new Move(p, i, j));
+                        for (int i = 0; i < 8; i++) {
+                            for (int j = 0; j < 8; j++) {
+                                if (availabilityMap[i][j]) {
+                                    possibleMoveArr.add(new Move(p, i, j));
+                                }
                             }
                         }
                     }

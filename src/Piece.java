@@ -57,11 +57,11 @@ class Pawn implements Piece {
 
         if (!color) {
             // Once forward
-            if (y == 1 && board[x][y + 1] == null) {
+            if (board[x][y + 1] == null) {
                 possibleMoves[x][y + 1] = true;
 
                 // Twice forward
-                if (board[x][y + 2] == null) {
+                if (y == 1 && board[x][y + 2] == null) {
                     possibleMoves[x][y + 2] = true;
                 }
             }
@@ -76,10 +76,10 @@ class Pawn implements Piece {
                 possibleMoves[x + 1][y + 1] = true;
             }
         } else {
-            if (y == 6 && board[x][y - 1] == null) {
+            if (board[x][y - 1] == null) {
                 possibleMoves[x][y - 1] = true;
 
-                if (board[x][y - 2] == null) {
+                if (y == 6 && board[x][y - 2] == null) {
                     possibleMoves[x][y - 2] = true;
                 }
             }
@@ -140,7 +140,7 @@ class Rook implements Piece {
         for (int i = x + 1; i < 8; i++) {
             if (board[i][y] == null) {
                 possibleMoves[i][y] = true;
-            } else if (board[i][y].color != this.color) {
+            } else if (board[i][y].getColor() != this.color) {
                 possibleMoves[i][y] = true;
                 break;
             } else {
@@ -151,7 +151,7 @@ class Rook implements Piece {
         for (int i = x - 1; i >= 0; i--) {
             if (board[i][y] == null) {
                 possibleMoves[i][y] = true;
-            } else if (board[i][y].color != this.color) {
+            } else if (board[i][y].getColor() != this.color) {
                 possibleMoves[i][y] = true;
                 break;
             } else {
@@ -159,10 +159,10 @@ class Rook implements Piece {
             }
         }
 
-        for (int i = y + 1; y < 8; y++) {
+        for (int i = y + 1; i < 8; i++) {
             if (board[x][i] == null) {
                 possibleMoves[x][i] = true;
-            } else if (board[x][i].color != this.color) {
+            } else if (board[x][i].getColor() != this.color) {
                 possibleMoves[x][i] = true;
                 break;
             } else {
@@ -170,10 +170,10 @@ class Rook implements Piece {
             }
         }
 
-        for (int i = y - 1; y >= 0; y--) {
+        for (int i = y - 1; i >= 0; i--) {
             if (board[x][i] == null) {
                 possibleMoves[x][i] = true;
-            } else if (board[x][i].color != this.color) {
+            } else if (board[x][i].getColor() != this.color) {
                 possibleMoves[x][i] = true;
                 break;
             } else {
@@ -226,49 +226,49 @@ class Knight implements Piece {
         boolean[][] possibleMoves = new boolean[8][8];
 
         try {
-            if (board[x + 1][y + 2].color != this.color) {
+            if (board[x + 1][y + 2] == null || board[x + 1][y + 2].getColor() != this.color) {
                 possibleMoves[x + 1][y + 2] = true;
             }
         } catch (Exception ignored) {};
 
         try {
-            if (board[x + 2][y + 1].color != this.color) {
+            if (board[x + 2][y + 1] == null || board[x + 2][y + 1].getColor() != this.color) {
                 possibleMoves[x + 2][y + 1] = true;
             }
         } catch (Exception ignored) {};
 
         try {
-            if (board[x + 2][y - 1].color != this.color) {
+            if (board[x + 2][y - 1] == null || board[x + 2][y - 1].getColor() != this.color) {
                 possibleMoves[x + 2][y - 1] = true;
             }
         } catch (Exception ignored) {};
 
         try {
-            if (board[x + 1][y - 2].color != this.color) {
+            if (board[x + 1][y - 2] == null || board[x + 1][y - 2].getColor() != this.color) {
                 possibleMoves[x + 1][y - 2] = true;
             }
         } catch (Exception ignored) {};
 
         try {
-            if (board[x - 1][y - 2].color != this.color) {
+            if (board[x - 1][y - 2] == null || board[x - 1][y - 2].getColor() != this.color) {
                 possibleMoves[x - 1][y - 2] = true;
             }
         } catch (Exception ignored) {};
 
         try {
-            if (board[x - 2][y - 1].color != this.color) {
+            if (board[x - 2][y - 1] == null || board[x - 2][y - 1].getColor() != this.color) {
                 possibleMoves[x - 2][y - 1] = true;
             }
         } catch (Exception ignored) {};
 
         try {
-            if (board[x - 2][y + 1].color != this.color) {
+            if (board[x - 2][y + 1] == null || board[x - 2][y + 1].getColor() != this.color) {
                 possibleMoves[x - 2][y + 1] = true;
             }
         } catch (Exception ignored) {};
 
         try {
-            if (board[x - 1][y + 2].color != this.color) {
+            if (board[x - 1][y + 2] == null || board[x - 1][y + 2].getColor() != this.color) {
                 possibleMoves[x - 1][y + 2] = true;
             }
         } catch (Exception ignored) {};
@@ -328,9 +328,9 @@ class Bishop implements Piece {
             }
 
             if (a) {
-                if (x + i < 7 && y + i < 7) {
+                if (x + i <= 7 && y + i <= 7) {
                     if (board[x + i][y + i] != null) {
-                        if (board[x + i][y + i].color != this.color) {
+                        if (board[x + i][y + i].getColor() != this.color) {
                             possibleMoves[x + i][y + i] = true;
                         } else {
                             a = false;
@@ -342,9 +342,9 @@ class Bishop implements Piece {
             }
 
             if (b) {
-                if (x + i < 7 && y - i >= 0) {
+                if (x + i <= 7 && y - i >= 0) {
                     if (board[x + i][y - i] != null) {
-                        if (board[x + i][y - i].color != this.color) {
+                        if (board[x + i][y - i].getColor() != this.color) {
                             possibleMoves[x + i][y - i] = true;
                         } else {
                             b = false;
@@ -358,7 +358,7 @@ class Bishop implements Piece {
             if (c) {
                 if (x - i >= 0 && y - i >= 0) {
                     if (board[x - i][y - i] != null) {
-                        if (board[x - i][y - i].color != this.color) {
+                        if (board[x - i][y - i].getColor() != this.color) {
                             possibleMoves[x - i][y - i] = true;
                         } else {
                             c = false;
@@ -370,9 +370,9 @@ class Bishop implements Piece {
             }
 
             if (d) {
-                if (x - i >= 0 && y + i < 7) {
+                if (x - i >= 0 && y + i <= 7) {
                     if (board[x - i][y + i] != null) {
-                        if (board[x - i][y + i].color != this.color) {
+                        if (board[x - i][y + i].getColor() != this.color) {
                             possibleMoves[x - i][y + i] = true;
                         } else {
                             d = false;
@@ -438,9 +438,9 @@ class Queen implements Piece {
             }
 
             if (a) {
-                if (x + i < 7 && y + i < 7) {
+                if (x + i <= 7 && y + i <= 7) {
                     if (board[x + i][y + i] != null) {
-                        if (board[x + i][y + i].color != this.color) {
+                        if (board[x + i][y + i].getColor() != this.color) {
                             possibleMoves[x + i][y + i] = true;
                         } else {
                             a = false;
@@ -452,9 +452,9 @@ class Queen implements Piece {
             }
 
             if (b) {
-                if (x + i < 7 && y - i >= 0) {
+                if (x + i <= 7 && y - i >= 0) {
                     if (board[x + i][y - i] != null) {
-                        if (board[x + i][y - i].color != this.color) {
+                        if (board[x + i][y - i].getColor() != this.color) {
                             possibleMoves[x + i][y - i] = true;
                         } else {
                             b = false;
@@ -468,7 +468,7 @@ class Queen implements Piece {
             if (c) {
                 if (x - i >= 0 && y - i >= 0) {
                     if (board[x - i][y - i] != null) {
-                        if (board[x - i][y - i].color != this.color) {
+                        if (board[x - i][y - i].getColor() != this.color) {
                             possibleMoves[x - i][y - i] = true;
                         } else {
                             c = false;
@@ -480,9 +480,9 @@ class Queen implements Piece {
             }
 
             if (d) {
-                if (x - i >= 0 && y + i < 7) {
+                if (x - i >= 0 && y + i <= 7) {
                     if (board[x - i][y + i] != null) {
-                        if (board[x - i][y + i].color != this.color) {
+                        if (board[x - i][y + i].getColor() != this.color) {
                             possibleMoves[x - i][y + i] = true;
                         } else {
                             d = false;
@@ -497,7 +497,7 @@ class Queen implements Piece {
         for (int i = x + 1; i < 8; i++) {
             if (board[i][y] == null) {
                 possibleMoves[i][y] = true;
-            } else if (board[i][y].color != this.color) {
+            } else if (board[i][y].getColor() != this.color) {
                 possibleMoves[i][y] = true;
                 break;
             } else {
@@ -508,7 +508,7 @@ class Queen implements Piece {
         for (int i = x - 1; i >= 0; i--) {
             if (board[i][y] == null) {
                 possibleMoves[i][y] = true;
-            } else if (board[i][y].color != this.color) {
+            } else if (board[i][y].getColor() != this.color) {
                 possibleMoves[i][y] = true;
                 break;
             } else {
@@ -516,10 +516,10 @@ class Queen implements Piece {
             }
         }
 
-        for (int i = y + 1; y < 8; y++) {
+        for (int i = y + 1; i < 8; i++) {
             if (board[x][i] == null) {
                 possibleMoves[x][i] = true;
-            } else if (board[x][i].color != this.color) {
+            } else if (board[x][i].getColor() != this.color) {
                 possibleMoves[x][i] = true;
                 break;
             } else {
@@ -527,10 +527,10 @@ class Queen implements Piece {
             }
         }
 
-        for (int i = y - 1; y >= 0; y--) {
+        for (int i = y - 1; i >= 0; i--) {
             if (board[x][i] == null) {
                 possibleMoves[x][i] = true;
-            } else if (board[x][i].color != this.color) {
+            } else if (board[x][i].getColor() != this.color) {
                 possibleMoves[x][i] = true;
                 break;
             } else {
@@ -583,39 +583,51 @@ class King implements Piece {
         boolean[][] possibleMoves = new boolean[8][8];
 
         if (x > 0) {
-            if (board[x - 1][y] == null || board[x - 1][y].color != this.color) {
+            if (board[x - 1][y] == null || board[x - 1][y].getColor() != this.color) {
                 possibleMoves[x - 1][y] = true;
             }
 
-            if (y > 0 && board[x - 1][y - 1] == null || board[x - 1][y - 1].color != this.color) {
-                possibleMoves[x - 1][y - 1] = true;
+            if (y > 0) {
+                if (board[x - 1][y - 1] == null || board[x - 1][y - 1].getColor() != this.color) {
+                    possibleMoves[x - 1][y - 1] = true;
+                }
             }
 
-            if (y < 7 && board[x - 1][y + 1] == null || board[x - 1][y + 1].color != this.color) {
-                possibleMoves[x - 1][y + 1] = true;
+            if (y < 7) {
+                if (board[x - 1][y + 1] == null || board[x - 1][y + 1].getColor() != this.color) {
+                    possibleMoves[x - 1][y + 1] = true;
+                }
             }
         }
 
         if (x < 7) {
-            if (board[x + 1][y] == null || board[x + 1][y].color != this.color) {
+            if (board[x + 1][y] == null || board[x + 1][y].getColor() != this.color) {
                 possibleMoves[x + 1][y] = true;
             }
 
-            if (y > 0 && board[x + 1][y - 1] == null || board[x + 1][y - 1].color != this.color) {
-                possibleMoves[x + 1][y - 1] = true;
+            if (y > 0) {
+                if (board[x + 1][y - 1] == null || board[x + 1][y - 1].getColor() != this.color) {
+                    possibleMoves[x + 1][y - 1] = true;
+                }
             }
 
-            if (y < 7 && board[x + 1][y + 1] == null || board[x + 1][y + 1].color != this.color) {
-                possibleMoves[x + 1][y + 1] = true;
+            if (y < 7) {
+                if (board[x + 1][y + 1] == null || board[x + 1][y + 1].getColor() != this.color) {
+                    possibleMoves[x + 1][y + 1] = true;
+                }
             }
         }
 
-        if (y > 0 && board[x][y - 1] == null || board[x][y - 1].color != this.color) {
-            possibleMoves[x][y - 1] = true;
+        if (y > 0) {
+            if (board[x][y - 1] == null || board[x][y - 1].getColor() != this.color) {
+                possibleMoves[x][y - 1] = true;
+            }
         }
 
-        if (y < 7 && board[x][y + 1] == null || board[x][y + 1].color != this.color) {
-            possibleMoves[x][y + 1] = true;
+        if (y < 7) {
+            if (board[x][y + 1] == null || board[x][y + 1].getColor() != this.color) {
+                possibleMoves[x][y + 1] = true;
+            }
         }
 
         return possibleMoves;
